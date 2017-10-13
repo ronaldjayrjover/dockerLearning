@@ -1,0 +1,2 @@
+# exclude vagrant working folder
+.vagrant

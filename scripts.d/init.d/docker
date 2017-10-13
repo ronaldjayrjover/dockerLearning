@@ -1,0 +1,53 @@
+#!/bin/bash
+
+# docker provisioner
+
+PREREQ="apt-transport-https ca-certificates curl software-properties-common"
+GPGKEY="curl -fsSL https://download.docker.com/linux/ubuntu/gpg"
+REPURL="deb [arch=amd64] https://download.docker.com/linux/ubuntu"
+REPURL="${REPURL} $(lsb_release -cs) stable"
+
+echo -e " [ docker ] provisioner"
+
+echo -e "     * remove legacy docker"
+sudo apt-get -y remove docker docker-engine docker.io &> /dev/null || {
+    echo -e "     * docker legacy removal failed!"; exit 1;
+}
+echo -e "     * done"
+
+echo -e "     * install prerequisites"
+sudo apt-get -y install  ${PREREQ} &> /dev/null || {
+    echo -e "     * prerequisites installation failed!"; exit 1;
+}
+echo -e "     * done"
+
+echo -e "     * install GPG keys"
+${GPGKEY} | sudo apt-key add - &> /dev/null || {
+    echo -e "     * GPG key installation failed!"; exit 1;
+}
+echo -e "     * done"
+
+echo -e "     * install APT repository"
+sudo add-apt-repository "${REPURL}" &> /dev/null || {
+    echo -e "${REPURL}"
+    echo -e "     * failed!"; exit 1;
+}
+echo -e "     * done"
+
+echo -e "     * updating repository"
+sudo apt-get update &> /dev/null || {
+    echo -e "     * update failed!"; exit 1;
+}
+echo -e "     * done"
+
+echo -e "     * install docker-ce"
+sudo apt-get -y install docker-ce &> /dev/null || {
+    echo -e "     * installation failed!"; exit 1;
+}
+echo -e "     * done"
+
+echo -e "     * cleanup repos"
+sudo apt-get -y autoremove &> /dev/null || {
+    echo -e "     * cleanup failed!"; exit 1;
+}
+echo -e "     * done"

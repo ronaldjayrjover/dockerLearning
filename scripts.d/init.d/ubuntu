@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# ubuntu provisioner
+
+echo -e " [ ubuntu ] provisioner"
+
+echo -e "     * updating repository"
+sudo apt-get update &> /dev/null || {
+    echo -e "     * update failed!"; exit 1;
+}
+echo -e "     * done"
+
+echo -e "     * cleanup stale packages"
+sudo apt-get -y autoremove &> /dev/null || {
+    echo -e "     * cleanup failed!"; exit 1;
+}
+echo -e "     * done"
+
+echo -e "     * installing puppet"
+sudo apt-get -y install puppet &> /dev/null || {
+    echo -e "     * puppet installation failed!"; exit 1;
+}
+echo -e "     * done"
