@@ -1,5 +1,4 @@
-## OpsWerks
-training exercises
+### Personal Training - ronjay
 # Docker
 by Docker
 
@@ -7,7 +6,7 @@ by Docker
 #### Getting Started
 Clone this repository by running :
 ```shell
-$ git clone git@gitlab.com:opswerks/docker-labs.git
+$ git clone git@github.com:ronaldjayrjover/dockerLearning.git
 $ cd ./docker-labs
 ```
 
@@ -26,27 +25,12 @@ For first time setup, `vagrant` will download the base `vagrant` box used before
 ```bash
 Bringing machine ‘puppet’ up with ‘virtualbox’ provider...
 Bringing machine ‘master’ up with ‘virtualbox’ provider...
-==> puppet: Box ‘research/xenial16x64’ could not be found. Attempting to find and install...
-   puppet: Box Provider: virtualbox
-   puppet: Box Version: >= 0
-==> puppet: Loading metadata for box ‘research/xenial16x64’
-   puppet: URL: https://atlas.hashicorp.com/research/xenial16x64
-==> puppet: Adding box ‘research/xenial16x64’ (v0.1.1) for provider: virtualbox
-   puppet: Downloading: https://atlas.hashicorp.com/research/boxes/xenial16x64/versions/0.1.1/providers/virtualbox.box
-   puppet: Progress: 21% (Rate: 374k/s, Estimated time remaining: 0:24:08)
+==>  Box ‘centos/7’ could not be found. Attempting to find and install...
 ...
 ```
 
 The `vagrant` boxes will be cached to easily spin up new labs when necessary
 
-```bash
-$ vagrant box list
-ansible/tower        (virtualbox, 3.0.2)
-centos7x64           (virtualbox, 0)
-laravel/homestead    (virtualbox, 0.5.0)
-research/centos7x64  (virtualbox, 0.1.1)
-research/xenial16x64 (virtualbox, 0.1.1)
-```
 
 To check the status of the boxes :
 ```bash
@@ -89,8 +73,5 @@ To run the provisioning scripts that failed.
 
 ---
 
-For comments and suggestions, contact us via :email: :
-* obie@opswerks.com
-* tom@opswerks.com
 
 -
